@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: CarParts
+    env: dotnet
+    plan: free
+    buildCommand: "dotnet build"
+    startCommand: "dotnet CarParts.dll"
+    rootDir: "CarParts/CarParts"
