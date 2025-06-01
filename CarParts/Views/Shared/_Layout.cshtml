@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Car Parts</title>
+    <link rel="stylesheet" asp-href-include="/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" asp-href-include="/css/custom.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+            <a class="navbar-brand" href="/">Car Parts</a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <a class="nav-link"
+                       asp-controller="Home" asp-action="List">Home</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <a class="nav-link"
+                               asp-controller="Order" asp-action="Index">Order</a>
+                        }
+                        @if (User.IsInRole("Staff"))
+                        {
+                            <a class="nav-link"
+                               asp-controller="Review" asp-action="Index">Review</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link"
+                               asp-controller="AdminHome" asp-action="Index">Admin</a>
+                        }
+                    }
+                    <a class="nav-link"
+                       asp-controller="Home" asp-action="About">About</a>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-link">
+                            Hello, @User.Identity.Name
+                        </li>
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button class="btn btn-link nav-link" type="submit">Log Out</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <div class="mt-5 border-top footer text-muted">
+        <div class="text-center small">
+            <p>
+                Created by: BJ.Rampai (2021460486)<br />
+                CSIS/CSIQ3734 - &copy; @DateTime.Now.Year - Car Parts
+            </p>
+        </div>
+    </div>
+    <script asp-src-include="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

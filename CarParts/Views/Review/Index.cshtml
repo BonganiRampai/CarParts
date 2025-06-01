@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "Review";
+}
+
+<h1> Review Orders</h1>
+<hr />
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Close">
+        </button>
+        @TempData["Message"]
+    </div>
+}
+<div>
+    <table class="table">
+        <thead class="text-center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model=>model.CustomerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.CarPartName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.OrderDate)
+                </th>
+                <th>
+                   @Html.DisplayNameFor(model=>model.Status) 
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var review in Model)
+            {
+                <tr>
+                    <td>
+                        <!--CustomerName-->
+                        @review.CustomerName
+                    </td>
+                    <td>
+                         <!--CarPartName-->
+                         @review.CarPartName
+                    </td>
+                    <td>
+                        <!--OrderDate-->
+                        @review.OrderDate.ToShortDateString()
+                    </td>
+                    <td>
+                        <!--Status-->
+                        @review.Status
+                    </td>
+                    <td>
+                        @if (review.Status == "Pending")
+                        {
+                            <form asp-action="ReviewOrder" asp-controller="Review" method="post"
+                                  asp-route-id="@review.OrderID" asp-route-status="Available">
+                                <input type="submit" class="btn btn-sm btn-primary" value="Available" />
+                            </form>
+                        }
+                    </td>
+                    <td>
+                        @if (review.Status == "Pending")
+                        {
+                            <form asp-action="ReviewOrder" asp-controller="Review" method="post"
+                                  asp-route-id="@review.OrderID" asp-route-status="Not Available">
+                                <input type="submit" class="btn btn-sm btn-danger" value="Not Available" />
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

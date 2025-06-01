@@ -1,0 +1,28 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Order Books";
+}
+
+<h1>Place an Order</h1>
+<hr />
+
+<div>
+    <form asp-controller="Order" asp-action="OrderParts" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group mb-3">
+            <label asp-for="CarPartName" class="control-label"></label>
+            <input asp-for="CarPartName" class="form-control" />
+            <span asp-validation-for="CarPartName" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Category" class="control-label"></label>
+            <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.Names">
+                <option value="">---Select Category---</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <input type="submit" value="Order" class="btn btn-primary" />
+            <a asp-controller="Order" asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>

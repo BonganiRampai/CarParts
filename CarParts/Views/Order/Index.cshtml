@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1> Order Car Parts</h1>
+<hr />
+<p>
+    <a asp-controller="Order" asp-action="OrderParts">Place an Order </a>
+</p>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Close">
+        </button>
+        @TempData["Message"]
+    </div>
+}
+@if(Model.Count() == 0)
+{
+    <h5> No Car Parts Ordered</h5>
+}
+else
+{
+    <div>
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="text-center">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category.CategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CarPartName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            <!--CategoryName-->
+                            @order.Category.CategoryName
+                        </td>
+                        <td>
+                            <!--CarPartName-->
+                            @order.CarPartName
+                        </td>
+                        <td>
+                            <!--OrderDate-->
+                            @order.OrderDate.ToShortDateString()
+                        </td>
+                        <td>
+                            <!--Status-->
+                            @order.Status
+                        </td>
+
+                        <td>
+                            <form asp-controller="Order" asp-action="CancelOrder" asp-route-id="@order.OrderID" method="post">
+                                <input type="submit" value="Cancel" class="btn btn-sm btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

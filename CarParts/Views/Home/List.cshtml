@@ -1,0 +1,48 @@
+﻿@model CarPartListViewModel
+@{
+    ViewBag.Title = "Home";
+}
+<div>
+<h1 class="text-center">Welcome to the Car Part Shop!</h1>
+
+    <h3 class="text-center">Make yourself at home and check out different parts of cars.</h3>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                         Name
+                    </th>
+                    <th>
+                         Price
+                    </th>
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var carpart in Model.CarParts)
+                {
+                    <tr>
+                        <td>@carpart.Name</td>
+                        <td>@carpart.Price.ToString("C")</td>
+                        <td>
+                            <a asp-action="Details"
+                               asp-route-id="@carpart.CarPartID"
+                               asp-route-slug="@carpart.Slug">View Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div page-model="@Model.PagingInfo" page-action="List"
+             page-classes-enabled="true"
+             page-class="btn" page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary"
+             class="btn-group pull-right m-1">
+        </div>
+    </div>
+</div>
