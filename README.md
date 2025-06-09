@@ -31,7 +31,7 @@ This is a simple ASP.NET Core MVC web application that allows users to manage ca
    ```bash
    git clone https://github.com/BonganiRampai/CarParts.git
 
-📸 Screenshots
+## 📸 Screenshots
 ![{FF4B77CC-49A2-41C0-98D9-627B17A5CF78}](https://github.com/user-attachments/assets/8b346051-ee71-49bf-915e-1fbd3bd33165)
 ![{3B488086-716A-4D77-8FD9-D9C20CF5C345}](https://github.com/user-attachments/assets/4c8b9477-c1ae-4416-afe6-600cf8c9882c)
 ![{1A0D5C98-0BDA-4E70-82AC-02FD158283A1}](https://github.com/user-attachments/assets/5804a890-7cbd-49c6-9605-2a052ab1f44f)
@@ -48,13 +48,13 @@ This is a simple ASP.NET Core MVC web application that allows users to manage ca
 ![{6F75D513-8EA5-4C18-BB20-620669D1732F}](https://github.com/user-attachments/assets/543af193-9de2-4ac3-b9cb-c92a6c986125)
 ![{767F20FE-FD97-44E6-80CE-43478656AD37}](https://github.com/user-attachments/assets/4d70361d-7314-4d8e-b345-a17c4da491f3)
 
-🧠 What I Learned
+## 🧠 What I Learned
 - Implementing MVC architecture
 - Using Entity Framework Core with SQL Server
 - Validating forms using ASP.NET Core
 - Creating and managing a GitHub repository
 
-🙋🏽‍♂️ Author
+## 🙋🏽‍♂️ Author
 Bongani Rampai
 GitHub: [@BonganiRampai](https://github.com/BonganiRampai)
 
