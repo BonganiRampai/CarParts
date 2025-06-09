@@ -56,7 +56,10 @@ This is a simple ASP.NET Core MVC web application that allows users to manage ca
 
 🙋🏽‍♂️ Author
 Bongani Rampai
-GitHub | LinkedIn
+
+## How to reach me
+- Email: [bonganerampai@gmail.com](mailto:bonganerampai@gmail.com)
+- LinkedIn: [linkedin.com/in/bongani-rampai](https://linkedin.com/in/bongani-rampai)
 
 
 
